@@ -118,7 +118,32 @@ document.querySelectorAll('.fade-up').forEach(el => {
 });
 
 /* ============================================================
-   3. JOB BOARD
+   3. HERO GLOW BLOBS — mouse-follow parallax (index.html only)
+   ============================================================ */
+const blob1 = document.querySelector('.hero__blob--1');
+const blob2 = document.querySelector('.hero__blob--2');
+
+if (blob1 && blob2) {
+  // quickTo fires every mousemove but GSAP batches renders — no jank
+  const b1x = gsap.quickTo(blob1, 'x', { duration: 1.6, ease: 'power2.out' });
+  const b1y = gsap.quickTo(blob1, 'y', { duration: 1.6, ease: 'power2.out' });
+  const b2x = gsap.quickTo(blob2, 'x', { duration: 2.6, ease: 'power2.out' });
+  const b2y = gsap.quickTo(blob2, 'y', { duration: 2.6, ease: 'power2.out' });
+
+  window.addEventListener('mousemove', (e) => {
+    // Offset from viewport center, scaled for subtle parallax
+    const dx = (e.clientX - window.innerWidth  / 2) * 0.22;
+    const dy = (e.clientY - window.innerHeight / 2) * 0.16;
+    // Blob 1 follows cursor direction; blob 2 counters on X for depth
+    b1x(dx);
+    b1y(dy);
+    b2x(-dx * 0.55);
+    b2y( dy * 0.65);
+  }, { passive: true });
+}
+
+/* ============================================================
+   4. JOB BOARD
    ============================================================ */
 const jobs = [
   {
@@ -271,7 +296,7 @@ filterBtns.forEach(btn => {
 renderJobs(); // Initial render
 
 /* ============================================================
-   4. PRICING TABS
+   5. PRICING TABS
    ============================================================ */
 const pricingTabs   = document.querySelectorAll('.pricing__tab');
 const pricingPanels = {
@@ -309,7 +334,7 @@ pricingTabs.forEach(tab => {
 });
 
 /* ============================================================
-   5. AI MATCH DEMO
+   6. AI MATCH DEMO
    ============================================================ */
 const candidates = [
   {
@@ -407,7 +432,7 @@ if (matchCard) {
 }
 
 /* ============================================================
-   6. PIPELINE STEPS
+   7. PIPELINE STEPS
    ============================================================ */
 const pipelineSteps = [
   {
@@ -542,7 +567,7 @@ if (pipelineDetail) {
 }
 
 /* ============================================================
-   7. CONTACT FORM
+   8. CONTACT FORM
    ============================================================ */
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
@@ -602,7 +627,7 @@ if (contactForm) {
 }
 
 /* ============================================================
-   8. SMOOTH SCROLL (offset for fixed nav)
+   9. SMOOTH SCROLL (offset for fixed nav)
    ============================================================ */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', (e) => {
