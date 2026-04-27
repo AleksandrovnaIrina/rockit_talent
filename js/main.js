@@ -53,8 +53,9 @@ function updateActiveLink() {
    ============================================================ */
 gsap.registerPlugin(ScrollTrigger);
 
-// Hero entrance timeline (plays on load, no scroll needed)
-const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+// Hero entrance timeline — paused on index.html (intro.js fires it via window.__playHero)
+const hasIntro = !!document.getElementById('loader');
+const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' }, paused: hasIntro });
 heroTl
   .from('.hero__badge',    { opacity: 0, y: 20, duration: 0.6 })
   .from('.hero__title',    { opacity: 0, y: 32, duration: 0.75 }, '-=0.35')
@@ -62,6 +63,10 @@ heroTl
   .from('.hero__actions',  { opacity: 0, y: 20, duration: 0.5  }, '-=0.35')
   .from('.hero__tags-wrap',{ opacity: 0,         duration: 0.6  }, '-=0.25')
   .from('.hero__stat',     { opacity: 0, y: 16, duration: 0.5, stagger: 0.1 }, '-=0.3');
+
+if (hasIntro) {
+  window.__playHero = () => heroTl.play();
+}
 
 // Grids with stagger (cards animate together when grid enters viewport)
 const staggerGrids = [

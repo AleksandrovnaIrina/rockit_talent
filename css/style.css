@@ -2179,6 +2179,62 @@ textarea, input, select {
 }
 
 /* ============================================================
+   24. INTRO LOADER (index.html only)
+   ============================================================ */
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Particles use position:fixed + GSAP x/y transforms for viewport-relative placement */
+.loader__particle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Purple radial burst — ignites as particles converge, fades when logo appears */
+.loader__glow-burst {
+  position: absolute;
+  width: 340px;
+  height: 230px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(113, 52, 232, 0.72) 0%, rgba(113, 52, 232, 0.12) 52%, transparent 70%);
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.loader__logo {
+  position: relative;
+  z-index: 2;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  color: #fff;
+  pointer-events: none;
+  user-select: none;
+}
+
+.loader__bolt  { display: inline-block; }
+.loader__talent { color: var(--accent); }
+
+/* ============================================================
    22. RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
