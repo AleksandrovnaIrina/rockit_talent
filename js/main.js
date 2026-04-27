@@ -125,10 +125,10 @@ const blob2 = document.querySelector('.hero__blob--2');
 
 if (blob1 && blob2) {
   // quickTo fires every mousemove but GSAP batches renders — no jank
-  const b1x = gsap.quickTo(blob1, 'x', { duration: 1.6, ease: 'power2.out' });
-  const b1y = gsap.quickTo(blob1, 'y', { duration: 1.6, ease: 'power2.out' });
-  const b2x = gsap.quickTo(blob2, 'x', { duration: 2.6, ease: 'power2.out' });
-  const b2y = gsap.quickTo(blob2, 'y', { duration: 2.6, ease: 'power2.out' });
+  const b1x = gsap.quickTo(blob1, 'x', { duration: 0.53, ease: 'power2.out' });
+  const b1y = gsap.quickTo(blob1, 'y', { duration: 0.53, ease: 'power2.out' });
+  const b2x = gsap.quickTo(blob2, 'x', { duration: 0.87, ease: 'power2.out' });
+  const b2y = gsap.quickTo(blob2, 'y', { duration: 0.87, ease: 'power2.out' });
 
   window.addEventListener('mousemove', (e) => {
     // Offset from viewport center, scaled for subtle parallax
