@@ -2334,6 +2334,87 @@ a, button, input, select, textarea, [role="button"] {
 .loader__talent { color: var(--accent); }
 
 /* ============================================================
+   23. PARTNERS
+   ============================================================ */
+.partners {
+  padding: 52px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.partners__label {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+
+.partners__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+}
+
+.partner-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 22px 28px;
+  background: #0d0d0d;
+  border: 1px solid #222;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.5);
+  min-width: 120px;
+  transition: border-color 0.22s var(--ease), transform 0.22s var(--ease);
+  user-select: none;
+}
+
+.partner-card:hover {
+  border-color: #333;
+  transform: translateY(-2px);
+}
+
+/* Logo placeholder: two-letter abbreviation block */
+.partner-card__abbr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: #181818;
+  border: 1px solid #2a2a2a;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #444;
+  letter-spacing: 0.04em;
+}
+
+.partner-card__name {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #444;
+  white-space: nowrap;
+}
+
+/* Mobile: smaller cards */
+@media (max-width: 768px) {
+  .partners { padding: 36px 0; }
+  .partners__grid { gap: 10px; }
+  .partner-card { padding: 16px 18px; min-width: 100px; }
+  .partner-card__abbr { width: 36px; height: 36px; font-size: 0.7rem; }
+  .partner-card__name { font-size: 0.75rem; }
+}
+
+/* ============================================================
    22. RESPONSIVE — 1024px (tablet landscape)
    ============================================================ */
 @media (max-width: 1024px) {

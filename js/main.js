@@ -115,6 +115,7 @@ if (hasIntro) {
 
 // Grids with stagger (cards animate together when grid enters viewport)
 const staggerGrids = [
+  '.partners__grid',
   '.why__grid',
   '.who-we-are__grid',
   '.guarantees__grid',
