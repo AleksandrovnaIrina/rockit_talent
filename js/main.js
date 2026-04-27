@@ -568,14 +568,31 @@ if (contactForm) {
       return;
     }
 
-    // Success state
-    // TODO: Replace with Formspree endpoint or your backend:
-    // fetch('https://formspree.io/f/YOUR_FORM_ID', { method:'POST', body: new FormData(contactForm) })
-    contactForm.querySelectorAll('input, select, textarea, button[type=submit]')
-      .forEach(el => el.disabled = true);
+    const submitBtn = contactForm.querySelector('button[type=submit]');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Надсилаємо…';
 
-    formSuccess.setAttribute('aria-hidden', 'false');
-    formSuccess.classList.add('form-success--visible');
+    fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { 'Accept': 'application/json' },
+    })
+      .then(res => {
+        if (res.ok) {
+          contactForm.querySelectorAll('input, select, textarea, button[type=submit]')
+            .forEach(el => el.disabled = true);
+          formSuccess.setAttribute('aria-hidden', 'false');
+          formSuccess.classList.add('form-success--visible');
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      })
+      .catch(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      });
   });
 
   // Clear error on input
