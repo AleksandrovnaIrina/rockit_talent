@@ -49,7 +49,52 @@ function updateActiveLink() {
 }
 
 /* ============================================================
-   2. GSAP ANIMATIONS
+   2. CUSTOM CURSOR
+   ============================================================ */
+(function () {
+  /* Skip on touch / no-pointer devices */
+  if (window.matchMedia('(hover: none)').matches) return;
+
+  const cursor = document.createElement('div');
+  cursor.className = 'cursor';
+  document.body.appendChild(cursor);
+
+  gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+
+  const moveX = gsap.quickTo(cursor, 'x', { duration: 0.38, ease: 'power3.out' });
+  const moveY = gsap.quickTo(cursor, 'y', { duration: 0.38, ease: 'power3.out' });
+
+  let visible = false;
+  window.addEventListener('mousemove', (e) => {
+    moveX(e.clientX);
+    moveY(e.clientY);
+    if (!visible) {
+      visible = true;
+      gsap.to(cursor, { opacity: 1, duration: 0.25 });
+    }
+  }, { passive: true });
+
+  /* Сховати коли миша виходить з вікна */
+  document.documentElement.addEventListener('mouseleave', () => {
+    gsap.to(cursor, { opacity: 0, duration: 0.25 });
+    visible = false;
+  });
+  document.documentElement.addEventListener('mouseenter', () => {
+    gsap.to(cursor, { opacity: 1, duration: 0.25 });
+    visible = true;
+  });
+
+  /* Збільшення на інтерактивних елементах */
+  document.querySelectorAll('a, button, select, input, textarea').forEach(el => {
+    el.addEventListener('mouseenter', () =>
+      gsap.to(cursor, { scale: 1.75, duration: 0.2, ease: 'power2.out' }));
+    el.addEventListener('mouseleave', () =>
+      gsap.to(cursor, { scale: 1, duration: 0.2, ease: 'power2.out' }));
+  });
+}());
+
+/* ============================================================
+   3. GSAP ANIMATIONS
    ============================================================ */
 gsap.registerPlugin(ScrollTrigger);
 

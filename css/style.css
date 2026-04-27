@@ -2246,7 +2246,39 @@ textarea, input, select {
 }
 
 /* ============================================================
-   24. INTRO LOADER (index.html only)
+   24. CUSTOM CURSOR
+   ============================================================ */
+body,
+a, button, input, select, textarea, [role="button"] {
+  cursor: none;
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #7C3AED;
+  box-shadow:
+    0 0 8px 3px rgba(124, 58, 237, 0.7),
+    0 0 24px 8px rgba(124, 58, 237, 0.28);
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+  opacity: 0; /* з'являється після першого mousemove */
+}
+
+/* Touch / no-hover: повертаємо стандартний курсор */
+@media (hover: none) {
+  body,
+  a, button, input, select, textarea, [role="button"] { cursor: auto; }
+  .cursor { display: none; }
+}
+
+/* ============================================================
+   25. INTRO LOADER (index.html only)
    ============================================================ */
 #loader {
   position: fixed;
