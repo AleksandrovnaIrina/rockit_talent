@@ -67,9 +67,10 @@ heroTl
 const staggerGrids = [
   '.why__grid',
   '.who-we-are__grid',
-  '.for-whom__grid',
   '.guarantees__grid',
   '.geo__grid',
+  '.reviews__grid',
+  '.split-cta__grid',
 ];
 
 const handledByStagger = new Set();
