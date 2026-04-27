@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rockit Talent — Для кандидатів</title>
+  <meta name="description" content="Анонімний AI-матчинг для iGaming та affiliate кандидатів. Безкоштовно. Тільки релевантні офери.">
+  <meta property="og:title" content="Rockit Talent — Для кандидатів">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===================== NAVIGATION ===================== -->
+<nav class="nav" id="nav" role="navigation" aria-label="Навігація">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="Rockit Talent — повернутись на головну">
+      <span class="nav__logo-icon" aria-hidden="true">⚡</span>
+      Rockit <span class="nav__logo-talent">TALENT</span>
+    </a>
+    <ul class="nav__links" id="navLinks" role="list">
+      <li><a href="#ai-match" class="nav__link">AI-Матч</a></li>
+      <li><a href="#jobs" class="nav__link">Вакансії</a></li>
+    </ul>
+    <a href="#contact" class="btn btn--primary btn--small nav__cta">Зв'язатись →</a>
+    <button class="nav__burger" id="navBurger" aria-label="Відкрити меню" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===================== PAGE HERO ===================== -->
+<section class="hero page-hero" id="hero" aria-label="Для кандидатів">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__glow"></div>
+    <div class="hero__grid"></div>
+  </div>
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <span class="hero__badge">Для кандидатів · iGaming &amp; Affiliate</span>
+      <h1 class="hero__title">
+        Анонімний матчинг<br>
+        для <span class="text-accent">iGaming</span>
+      </h1>
+      <p class="hero__desc">
+        Тільки релевантні офери. Ти контролюєш видимість — вмикай і вимикай у будь-який момент. Безкоштовно для кандидатів.
+      </p>
+      <div class="hero__actions">
+        <a href="#ai-match" class="btn btn--primary">Створити профіль →</a>
+        <a href="#jobs" class="btn btn--outline">Переглянути вакансії →</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="hero__stats" role="list" aria-label="Ключові показники">
+      <div class="hero__stat" role="listitem">
+        <span class="hero__stat-value">100%</span>
+        <span class="hero__stat-label">анонімність профілю</span>
+      </div>
+      <div class="hero__stat" role="listitem">
+        <span class="hero__stat-value">0₴</span>
+        <span class="hero__stat-label">безкоштовно для тебе</span>
+      </div>
+      <div class="hero__stat" role="listitem">
+        <span class="hero__stat-value">AI</span>
+        <span class="hero__stat-label">матчинг по performance</span>
+      </div>
+      <div class="hero__stat" role="listitem">
+        <span class="hero__stat-value">95%</span>
+        <span class="hero__stat-label">нерелевантних відфільтровано</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AI MATCH ===================== -->
+<section class="ai-match section" id="ai-match">
+  <div class="ai-match__bg" aria-hidden="true"><div class="ai-match__glow"></div></div>
+  <div class="container ai-match__inner">
+    <div class="ai-match__content fade-up">
+      <span class="section-label">AI-Матч</span>
+      <h2>Анонімний матчинг для iGaming-ніші</h2>
+      <p class="ai-match__desc">Як Tinder, але для найму. Кандидат реєструється анонімно — тільки роль, скіли та очікування. Компанія бачить знеособлений профіль. Контакти відкриваються тільки після взаємного match.</p>
+      <ul class="ai-match__features" role="list">
+        <li>
+          <span class="ai-match__feat-icon" aria-hidden="true">👤</span>
+          <div>
+            <strong>Анонімно</strong>
+            <span>Профіль без імені та фото — тільки роль і скіли</span>
+          </div>
+        </li>
+        <li>
+          <span class="ai-match__feat-icon" aria-hidden="true">🎯</span>
+          <div>
+            <strong>Тільки релевантне</strong>
+            <span>Жодного спаму — тільки офери, що підходять тобі</span>
+          </div>
+        </li>
+        <li>
+          <span class="ai-match__feat-icon" aria-hidden="true">🤖</span>
+          <div>
+            <strong>AI-алгоритм</strong>
+            <span>Матчинг по performance-профілю, не по чеклісту</span>
+          </div>
+        </li>
+      </ul>
+      <div class="ai-match__actions">
+        <a href="#contact" class="btn btn--primary">Зареєструватись як кандидат</a>
+        <a href="#jobs" class="btn btn--outline">Переглянути вакансії →</a>
+      </div>
+    </div>
+
+    <div class="ai-match__demo fade-up" aria-label="Демо AI-матчингу">
+      <div class="match-card" id="matchCard" role="article" aria-label="Профіль кандидата">
+        <div class="match-card__match">
+          <span class="match-card__pct" id="matchPct">94%</span>
+          <span class="match-card__pct-label">match</span>
+        </div>
+        <div class="match-card__role" id="matchRole">Senior Media Buyer</div>
+        <div class="match-card__exp" id="matchExp">5 років досвіду</div>
+        <div class="match-card__tags" id="matchTags">
+          <span class="tag tag--sm">Facebook Ads</span>
+          <span class="tag tag--sm">TikTok</span>
+          <span class="tag tag--sm">UAC</span>
+          <span class="tag tag--sm">iGaming</span>
+        </div>
+        <div class="match-card__meta">
+          <div class="match-card__meta-item">
+            <span class="match-card__meta-label">Зарплата</span>
+            <span class="match-card__meta-val" id="matchSalary">$4,500 – 6,000</span>
+          </div>
+          <div class="match-card__meta-item">
+            <span class="match-card__meta-label">Формат</span>
+            <span class="match-card__meta-val" id="matchFormat">Remote</span>
+          </div>
+        </div>
+        <div class="match-card__anon" aria-label="Статус анонімності">
+          <span aria-hidden="true">🔒</span> Профіль анонімний до взаємного match
+        </div>
+      </div>
+
+      <div class="match-actions" role="group" aria-label="Дії з профілем">
+        <button class="match-btn match-btn--skip" id="matchSkip" aria-label="Пропустити">✕</button>
+        <button class="match-btn match-btn--like" id="matchLike" aria-label="Match з кандидатом">✓</button>
+      </div>
+      <p class="match-counter" aria-live="polite">
+        Профіль <span id="matchCounter">1</span> з 3
+      </p>
+      <div class="match-notification" id="matchNotification" role="alert" aria-live="assertive">
+        🎉 Mutual Match! Контакти відкрито
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== JOB BOARD ===================== -->
+<section class="jobs section" id="jobs">
+  <div class="container">
+    <div class="jobs__header fade-up">
+      <div>
+        <span class="section-label">Вакансії</span>
+        <h2>Відкриті позиції</h2>
+      </div>
+      <a href="#contact" class="btn btn--outline">Надіслати профіль →</a>
+    </div>
+    <div class="jobs__filters fade-up" role="group" aria-label="Фільтр вакансій">
+      <button class="jobs__filter jobs__filter--active" data-filter="all">Всі</button>
+      <button class="jobs__filter" data-filter="remote">Remote</button>
+      <button class="jobs__filter" data-filter="igaming">iGaming</button>
+      <button class="jobs__filter" data-filter="affiliate">Affiliate</button>
+      <button class="jobs__filter" data-filter="media-buying">Media Buying</button>
+      <button class="jobs__filter" data-filter="senior">Senior+</button>
+      <button class="jobs__filter" data-filter="tech">Tech</button>
+    </div>
+    <div class="jobs__grid" id="jobsGrid" aria-live="polite" aria-label="Список вакансій">
+      <!-- Рендериться через JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="contact section" id="contact">
+  <div class="container contact__inner">
+    <div class="contact__info fade-up">
+      <span class="section-label">Контакт</span>
+      <h2>Надіслати профіль</h2>
+      <p>Заповніть коротку форму — і ми зв'яжемося для уточнення деталей та підбору релевантних офферів.</p>
+      <ol class="contact__steps" aria-label="Кроки процесу">
+        <li class="contact__step">
+          <span class="contact__step-num" aria-hidden="true">1</span>
+          <div>
+            <strong>Заповніть форму</strong>
+            <span>Бажана роль, досвід та контакт для зв'язку</span>
+          </div>
+        </li>
+        <li class="contact__step">
+          <span class="contact__step-num" aria-hidden="true">2</span>
+          <div>
+            <strong>Зв'яжемося за 24 год</strong>
+            <span>Уточнимо деталі та ваші очікування</span>
+          </div>
+        </li>
+        <li class="contact__step">
+          <span class="contact__step-num" aria-hidden="true">3</span>
+          <div>
+            <strong>AI-матчинг запущено</strong>
+            <span>Отримуєш тільки релевантні офери для вашого профілю</span>
+          </div>
+        </li>
+        <li class="contact__step">
+          <span class="contact__step-num" aria-hidden="true">4</span>
+          <div>
+            <strong>Безкоштовно</strong>
+            <span>Сервіс повністю безкоштовний для кандидатів</span>
+          </div>
+        </li>
+      </ol>
+      <div class="contact__socials">
+        <a href="https://t.me/rockit_talent" class="contact__social" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">✈</span> Telegram: @rockit_talent
+        </a>
+        <a href="https://instagram.com/rockit_talent" class="contact__social" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">📸</span> Instagram: @rockit_talent
+        </a>
+      </div>
+    </div>
+
+    <form class="contact__form fade-up" id="contactForm" novalidate aria-label="Форма для кандидата">
+      <div class="form-group">
+        <label for="fRole">Бажана роль <span aria-hidden="true">*</span></label>
+        <input type="text" id="fRole" name="fRole" placeholder="напр. Senior Media Buyer" required autocomplete="off">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fLevel">Рівень <span aria-hidden="true">*</span></label>
+          <select id="fLevel" name="fLevel" required>
+            <option value="">Оберіть рівень</option>
+            <option value="junior">Junior</option>
+            <option value="middle">Middle</option>
+            <option value="senior">Senior</option>
+            <option value="lead">Lead / Head</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fFormat">Формат роботи</label>
+          <select id="fFormat" name="fFormat">
+            <option value="">Будь-який</option>
+            <option value="remote">Remote</option>
+            <option value="office">Office</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="relocate">Relocate</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fSkills">Ключові скіли <span aria-hidden="true">*</span></label>
+        <textarea id="fSkills" name="fSkills" rows="3" placeholder="напр. Facebook Ads, iGaming, медіабаїнг 5+ років" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="fSalary">Очікуваний дохід</label>
+        <input type="text" id="fSalary" name="fSalary" placeholder="напр. $3,000 – 4,500" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="fContact">Telegram або email <span aria-hidden="true">*</span></label>
+        <input type="text" id="fContact" name="fContact" placeholder="@username або email" required autocomplete="off">
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">Надіслати профіль →</button>
+      <div class="form-success" id="formSuccess" role="alert" aria-hidden="true">
+        <span aria-hidden="true">✓</span> Профіль отримано! Зв'яжемося протягом 24 годин.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer" id="footer">
+  <div class="footer__cta">
+    <div class="container footer__cta-inner fade-up">
+      <p class="footer__cta-label">Recruitment Powered by Performance</p>
+      <h2 class="footer__cta-title">Готові знайти свою роль?</h2>
+      <p class="footer__cta-desc">Створіть анонімний профіль — і отримуйте тільки релевантні офери від iGaming компаній.</p>
+      <div class="footer__cta-actions">
+        <a href="#ai-match" class="btn btn--primary">Створити профіль →</a>
+        <a href="#jobs" class="btn btn--outline">Переглянути вакансії →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__main">
+    <div class="container footer__main-inner">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo footer__logo" aria-label="Rockit Talent — на головну">
+          <span aria-hidden="true">⚡</span> Rockit <span class="nav__logo-talent">TALENT</span>
+        </a>
+        <p>Рекрутингова агенція для iGaming, affiliate та performance marketing. Частина <a href="https://rockitmedia.io" target="_blank" rel="noopener noreferrer">Rockit Media</a>.</p>
+        <div class="footer__socials">
+          <a href="https://t.me/rockit_talent" class="footer__social-link" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a href="https://instagram.com/rockit_talent" class="footer__social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://rockitmedia.io" class="footer__social-link" target="_blank" rel="noopener noreferrer">rockitmedia.io</a>
+        </div>
+      </div>
+      <nav class="footer__col" aria-label="Кандидатам">
+        <h5>Кандидатам</h5>
+        <ul role="list">
+          <li><a href="#ai-match">AI-Матчинг</a></li>
+          <li><a href="#jobs">Відкриті вакансії</a></li>
+          <li><a href="#contact">Надіслати профіль</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-label="Компаніям">
+        <h5>Компаніям</h5>
+        <ul role="list">
+          <li><a href="companies.html#pipeline">Процес найму</a></li>
+          <li><a href="companies.html#pricing">Прайс</a></li>
+          <li><a href="companies.html#contact">Розмістити вакансію</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-label="Про агенцію">
+        <h5>Про агенцію</h5>
+        <ul role="list">
+          <li><a href="companies.html#who-we-are">Хто ми</a></li>
+          <li><a href="companies.html#why">Чому Rockit</a></li>
+          <li><a href="https://rockitmedia.io" target="_blank" rel="noopener noreferrer">rockitmedia.io ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <span>© 2026 Rockit Talent. Recruitment Powered by Performance.</span>
+      <a href="index.html" class="footer__policy">← На головну</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
