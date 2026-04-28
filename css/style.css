@@ -10,8 +10,8 @@
   --bg-alt:       #050505;
   --bg-card:      #0d0d0d;
   --bg-card-hover:#111111;
-  --accent:       #B5E726;
-  --accent-hover: #c8f030;
+  --accent:       #CCFF00;
+  --accent-hover: #d9ff33;
   --purple:       #7134E8;
   --purple-dim:   rgba(113, 52, 232, 0.15);
   --purple-glow:  rgba(113, 52, 232, 0.35);
@@ -34,7 +34,7 @@
 
   --nav-h:       72px;
   --container:   1200px;
-  --section-pad: 100px;
+  --section-pad: 120px;
 }
 
 /* ============================================================
@@ -49,6 +49,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
+  overflow-x: hidden;
 }
 
 body {
@@ -117,7 +118,7 @@ textarea, input, select {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 13px 26px;
+  padding: 15px 30px;
   border-radius: var(--radius);
   font-family: var(--font-body);
   font-size: 0.9rem;
@@ -186,30 +187,31 @@ textarea, input, select {
 .section-header {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 64px;
+  margin: 0 auto 80px;
 }
 
 .section-label {
   display: inline-block;
-  padding: 5px 16px;
-  background: rgba(113, 52, 232, 0.1);
-  border: 1px solid rgba(113, 52, 232, 0.3);
-  border-radius: var(--radius-full);
-  color: var(--purple);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: var(--accent);
   margin-bottom: 20px;
+}
+
+/* Pipeline is white bg — keep purple label there */
+.pipeline.section .section-label {
+  color: var(--purple);
 }
 
 .section-header h2 {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 800;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 900;
   color: var(--white);
-  line-height: 1.2;
-  margin-bottom: 16px;
+  line-height: 1.1;
+  margin-bottom: 20px;
 }
 
 .section-desc {
@@ -333,19 +335,18 @@ textarea, input, select {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(113, 52, 232, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(113, 52, 232, 0.055) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
 .hero__glow {
   position: absolute;
-  top: -150px;
-  right: -150px;
-  width: 750px;
-  height: 750px;
-  background: radial-gradient(circle, rgba(113, 52, 232, 0.4) 0%, transparent 65%);
-  animation: glow-pulse 5s ease-in-out infinite;
+  top: -200px;
+  right: -200px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(204, 255, 0, 0.055) 0%, transparent 60%);
 }
 
 @keyframes glow-pulse {
@@ -428,7 +429,7 @@ textarea, input, select {
 }
 
 .hero__content {
-  max-width: 52%;
+  max-width: 720px;
 }
 
 .hero__badge {
@@ -446,12 +447,12 @@ textarea, input, select {
 
 .hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-size: clamp(3.2rem, 8.5vw, 7rem);
   font-weight: 900;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
   color: var(--white);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .hero__desc {
@@ -517,7 +518,7 @@ textarea, input, select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 28px 20px;
+  padding: 36px 24px;
   text-align: center;
   background: var(--bg-card);
   border-right: 1px solid var(--border);
@@ -528,17 +529,18 @@ textarea, input, select {
 
 .hero__stat-value {
   font-family: var(--font-heading);
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-  font-weight: 800;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 900;
   color: var(--accent);
   line-height: 1;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .hero__stat-label {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--muted);
   font-weight: 500;
+  line-height: 1.4;
 }
 
 /* ============================================================
@@ -684,7 +686,7 @@ textarea, input, select {
   font-family: var(--font-heading);
   font-size: 2.5rem;
   font-weight: 900;
-  color: rgba(113, 52, 232, 0.12);
+  color: rgba(255, 255, 255, 0.06);
   line-height: 1;
   margin-bottom: 16px;
   letter-spacing: -0.02em;
@@ -762,10 +764,10 @@ textarea, input, select {
 
 .pipeline__title {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 800;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 900;
   color: #000000;
-  line-height: 1.2;
+  line-height: 1.1;
   margin: 16px 0;
 }
 
@@ -1795,7 +1797,7 @@ textarea, input, select {
 .geo__sub {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--purple);
+  color: var(--muted);
   letter-spacing: 0.02em;
 }
 
@@ -1963,7 +1965,7 @@ textarea, input, select {
   flex-direction: column;
   transition: border-color var(--duration) var(--ease);
 }
-.reviews__card:hover { border-color: rgba(113, 52, 232, 0.4); }
+.reviews__card:hover { border-color: var(--border-hover); }
 
 .reviews__stars {
   color: var(--accent);
@@ -1991,8 +1993,8 @@ textarea, input, select {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(113, 52, 232, 0.1);
-  border: 1px solid rgba(113, 52, 232, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2024,10 +2026,10 @@ textarea, input, select {
 
 .split-cta__head h2 {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 800;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 900;
   color: var(--white);
-  line-height: 1.2;
+  line-height: 1.1;
   margin-top: 16px;
 }
 
@@ -2242,39 +2244,45 @@ textarea, input, select {
    ============================================================ */
 .fade-up {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(32px);
 }
 
 /* ============================================================
-   24. CUSTOM CURSOR
+   24. JOB FILTER DROPDOWNS (candidates.html)
    ============================================================ */
-body,
-a, button, input, select, textarea, [role="button"] {
-  cursor: none;
+.jobs__filter-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
-.cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: #7C3AED;
-  box-shadow:
-    0 0 8px 3px rgba(124, 58, 237, 0.7),
-    0 0 24px 8px rgba(124, 58, 237, 0.28);
-  pointer-events: none;
-  z-index: 99999;
-  will-change: transform;
-  opacity: 0; /* з'являється після першого mousemove */
+.jobs__select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 11px 40px 11px 18px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--white);
+  border: 1px solid var(--border);
+  background-color: var(--bg-card);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b6b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+  transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease);
+  outline: none;
+  min-width: 140px;
 }
+.jobs__select:hover,
+.jobs__select:focus { border-color: var(--accent); }
+.jobs__select option { background: #1a1a1a; color: var(--white); }
 
-/* Touch / no-hover: повертаємо стандартний курсор */
-@media (hover: none) {
-  body,
-  a, button, input, select, textarea, [role="button"] { cursor: auto; }
-  .cursor { display: none; }
+@media (max-width: 768px) {
+  .jobs__filter-group { gap: 8px; }
+  .jobs__select { min-width: 0; flex: 1; font-size: 0.8rem; padding: 10px 32px 10px 14px; }
 }
 
 /* ============================================================
@@ -2418,7 +2426,7 @@ a, button, input, select, textarea, [role="button"] {
    22. RESPONSIVE — 1024px (tablet landscape)
    ============================================================ */
 @media (max-width: 1024px) {
-  :root { --section-pad: 80px; }
+  :root { --section-pad: 96px; }
 
   .pricing__tables    { grid-template-columns: repeat(2, 1fr); }
   .pricing__cold-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2476,12 +2484,13 @@ a, button, input, select, textarea, [role="button"] {
   .section-header h2,
   .pipeline__title,
   .split-cta__head h2 {
-    font-size: clamp(1.6rem, 6vw, 2rem);
+    font-size: clamp(1.8rem, 6.5vw, 2.4rem);
   }
   .section-desc { font-size: 0.9rem; }
 
   /* ── Hero ── */
   .hero__image-wrap { display: none; }
+  .hero__blob--1, .hero__blob--2 { display: none; }
   .hero__content    { max-width: 100%; }
   .hero__title      { font-size: clamp(2rem, 9vw, 3rem); }
   .hero__desc       { font-size: 1rem; }

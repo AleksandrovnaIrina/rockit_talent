@@ -48,50 +48,6 @@ function updateActiveLink() {
   });
 }
 
-/* ============================================================
-   2. CUSTOM CURSOR
-   ============================================================ */
-(function () {
-  /* Skip on touch / no-pointer devices */
-  if (window.matchMedia('(hover: none)').matches) return;
-
-  const cursor = document.createElement('div');
-  cursor.className = 'cursor';
-  document.body.appendChild(cursor);
-
-  gsap.set(cursor, { xPercent: -50, yPercent: -50 });
-
-  const moveX = gsap.quickTo(cursor, 'x', { duration: 0.38, ease: 'power3.out' });
-  const moveY = gsap.quickTo(cursor, 'y', { duration: 0.38, ease: 'power3.out' });
-
-  let visible = false;
-  window.addEventListener('mousemove', (e) => {
-    moveX(e.clientX);
-    moveY(e.clientY);
-    if (!visible) {
-      visible = true;
-      gsap.to(cursor, { opacity: 1, duration: 0.25 });
-    }
-  }, { passive: true });
-
-  /* Сховати коли миша виходить з вікна */
-  document.documentElement.addEventListener('mouseleave', () => {
-    gsap.to(cursor, { opacity: 0, duration: 0.25 });
-    visible = false;
-  });
-  document.documentElement.addEventListener('mouseenter', () => {
-    gsap.to(cursor, { opacity: 1, duration: 0.25 });
-    visible = true;
-  });
-
-  /* Збільшення на інтерактивних елементах */
-  document.querySelectorAll('a, button, select, input, textarea').forEach(el => {
-    el.addEventListener('mouseenter', () =>
-      gsap.to(cursor, { scale: 1.75, duration: 0.2, ease: 'power2.out' }));
-    el.addEventListener('mouseleave', () =>
-      gsap.to(cursor, { scale: 1, duration: 0.2, ease: 'power2.out' }));
-  });
-}());
 
 /* ============================================================
    3. GSAP ANIMATIONS
@@ -102,12 +58,11 @@ gsap.registerPlugin(ScrollTrigger);
 const hasIntro = !!document.getElementById('loader');
 const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' }, paused: hasIntro });
 heroTl
-  .from('.hero__badge',    { opacity: 0, y: 20, duration: 0.6 })
-  .from('.hero__title',    { opacity: 0, y: 32, duration: 0.75 }, '-=0.35')
-  .from('.hero__desc',     { opacity: 0, y: 20, duration: 0.6  }, '-=0.45')
-  .from('.hero__actions',  { opacity: 0, y: 20, duration: 0.5  }, '-=0.35')
-  .from('.hero__tags-wrap',{ opacity: 0,         duration: 0.6  }, '-=0.25')
-  .from('.hero__stat',     { opacity: 0, y: 16, duration: 0.5, stagger: 0.1 }, '-=0.3');
+  .from('.hero__title',    { opacity: 0, y: 40, duration: 0.8 })
+  .from('.hero__desc',     { opacity: 0, y: 24, duration: 0.65 }, '-=0.45')
+  .from('.hero__actions',  { opacity: 0, y: 20, duration: 0.55 }, '-=0.4')
+  .from('.hero__tags-wrap',{ opacity: 0,         duration: 0.6  }, '-=0.3')
+  .from('.hero__stat',     { opacity: 0, y: 20, duration: 0.55, stagger: 0.1 }, '-=0.35');
 
 if (hasIntro) {
   window.__playHero = () => heroTl.play();
@@ -132,61 +87,43 @@ staggerGrids.forEach(selector => {
   const cards = grid.querySelectorAll('.fade-up');
   cards.forEach(c => handledByStagger.add(c));
 
-  gsap.to(cards, {
-    opacity: 1,
-    y: 0,
-    duration: 0.65,
-    ease: 'power2.out',
-    stagger: 0.1,
-    scrollTrigger: {
-      trigger: grid,
-      start: 'top 85%',
-      once: true,
-    },
-  });
+  gsap.fromTo(cards,
+    { opacity: 0, y: 32 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      ease: 'power2.out',
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: grid,
+        start: 'top 85%',
+        once: true,
+      },
+    }
+  );
 });
 
 // All other .fade-up elements (section headers, blockquotes, panels, etc.)
 document.querySelectorAll('.fade-up').forEach(el => {
   if (handledByStagger.has(el)) return;
 
-  gsap.to(el, {
-    opacity: 1,
-    y: 0,
-    duration: 0.65,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: el,
-      start: 'top 88%',
-      once: true,
-    },
-  });
+  gsap.fromTo(el,
+    { opacity: 0, y: 32 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        once: true,
+      },
+    }
+  );
 });
 
-/* ============================================================
-   3. HERO GLOW BLOBS — mouse-follow parallax (index.html only)
-   ============================================================ */
-const blob1 = document.querySelector('.hero__blob--1');
-const blob2 = document.querySelector('.hero__blob--2');
-
-if (blob1 && blob2) {
-  // quickTo fires every mousemove but GSAP batches renders — no jank
-  const b1x = gsap.quickTo(blob1, 'x', { duration: 0.53, ease: 'power2.out' });
-  const b1y = gsap.quickTo(blob1, 'y', { duration: 0.53, ease: 'power2.out' });
-  const b2x = gsap.quickTo(blob2, 'x', { duration: 0.87, ease: 'power2.out' });
-  const b2y = gsap.quickTo(blob2, 'y', { duration: 0.87, ease: 'power2.out' });
-
-  window.addEventListener('mousemove', (e) => {
-    // Offset from viewport center, scaled for subtle parallax
-    const dx = (e.clientX - window.innerWidth  / 2) * 0.22;
-    const dy = (e.clientY - window.innerHeight / 2) * 0.16;
-    // Blob 1 follows cursor direction; blob 2 counters on X for depth
-    b1x(dx);
-    b1y(dy);
-    b2x(-dx * 0.55);
-    b2y( dy * 0.65);
-  }, { passive: true });
-}
 
 /* ============================================================
    4. JOB BOARD
@@ -195,71 +132,78 @@ const jobs = [
   {
     id: 1,
     title: 'Senior Media Buyer',
-    categories: ['igaming', 'media-buying', 'senior', 'remote'],
+    direction: 'media-buying',
+    jobFormat: 'remote',
+    level: 'senior',
     tags: ['iGaming', 'Media Buying', 'Senior'],
     salary: '$3,500 – 5,000',
     location: 'Remote',
-    format: 'Remote',
     badge: 'hot',
   },
   {
     id: 2,
     title: 'Head of Affiliate',
-    categories: ['igaming', 'affiliate', 'senior'],
+    direction: 'affiliate',
+    jobFormat: 'hybrid',
+    level: 'head',
     tags: ['iGaming', 'Affiliate', 'Head'],
     salary: 'від $4,000',
     location: 'Warsaw / Remote',
-    format: 'Hybrid',
     badge: 'new',
   },
   {
     id: 3,
     title: 'Traffic Manager',
-    categories: ['igaming', 'remote'],
-    tags: ['iGaming', 'Traffic'],
+    direction: 'media-buying',
+    jobFormat: 'remote',
+    level: 'middle',
+    tags: ['iGaming', 'Traffic', 'Middle'],
     salary: '$1,800 – 2,800',
     location: 'Remote',
-    format: 'Remote',
     badge: null,
   },
   {
     id: 4,
     title: 'Affiliate Manager',
-    categories: ['affiliate', 'remote'],
-    tags: ['Affiliate', 'AdTech'],
+    direction: 'affiliate',
+    jobFormat: 'remote',
+    level: 'middle',
+    tags: ['Affiliate', 'AdTech', 'Middle'],
     salary: '$2,200 – 3,500',
     location: 'Remote',
-    format: 'Remote',
     badge: 'new',
   },
   {
     id: 5,
     title: 'Senior Python Developer',
-    categories: ['igaming', 'tech', 'senior', 'remote'],
+    direction: 'tech',
+    jobFormat: 'remote',
+    level: 'senior',
     tags: ['iGaming', 'Tech', 'Python', 'Senior'],
     salary: '$3,000 – 4,500',
     location: 'Remote',
-    format: 'Remote',
     badge: null,
   },
   {
     id: 6,
     title: 'CMO',
-    categories: ['igaming', 'senior'],
-    tags: ['iGaming', 'C-Level', 'Senior+'],
+    direction: 'bizdev',
+    jobFormat: 'hybrid',
+    level: 'head',
+    tags: ['iGaming', 'C-Level', 'BizDev'],
     salary: 'від $6,000',
     location: 'Hybrid EU',
-    format: 'Hybrid',
     badge: 'hot',
   },
   {
     id: 7,
     title: 'QA Engineer Automation',
-    categories: ['igaming', 'tech', 'remote'],
+    direction: 'tech',
+    jobFormat: 'remote',
+    level: 'middle',
     tags: ['iGaming', 'Tech', 'QA'],
     salary: 'Незабаром',
     location: 'Remote',
-    format: 'Remote',
     badge: 'soon',
   },
 ];
@@ -267,15 +211,18 @@ const jobs = [
 const badgeLabels = { hot: 'Hot', new: 'New', soon: 'Soon' };
 const badgeClasses = { hot: 'job-badge--hot', new: 'job-badge--new', soon: 'job-badge--soon' };
 
-function renderJobs(filter = 'all') {
+function renderJobs(direction = '', jobFormat = '', level = '') {
   const grid = document.getElementById('jobsGrid');
   if (!grid) return;
 
   grid.innerHTML = '';
 
-  const filtered = filter === 'all'
-    ? jobs
-    : jobs.filter(j => j.categories.includes(filter));
+  const filtered = jobs.filter(j => {
+    if (direction && j.direction !== direction) return false;
+    if (jobFormat && j.jobFormat !== jobFormat) return false;
+    if (level && j.level !== level) return false;
+    return true;
+  });
 
   if (!filtered.length) {
     grid.innerHTML = '<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:40px 0;">Вакансій за цим фільтром поки немає.</p>';
@@ -303,7 +250,7 @@ function renderJobs(filter = 'all') {
       <div class="job-card__tags">${tags}</div>
       <div class="job-card__meta">
         <span>📍 ${job.location}</span>
-        <span>🏠 ${job.format}</span>
+        <span>🏠 ${job.jobFormat.charAt(0).toUpperCase() + job.jobFormat.slice(1)}</span>
       </div>
       <div class="job-card__footer">
         <span class="job-card__salary">${job.salary}</span>
@@ -329,13 +276,20 @@ function renderJobs(filter = 'all') {
   });
 }
 
-// Filter buttons
-const filterBtns = document.querySelectorAll('.jobs__filter');
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('jobs__filter--active'));
-    btn.classList.add('jobs__filter--active');
-    renderJobs(btn.dataset.filter);
+// Dropdown filters (candidates.html)
+function getDropdownFilters() {
+  const dir   = (document.getElementById('filterDirection') || {}).value || '';
+  const fmt   = (document.getElementById('filterFormat')    || {}).value || '';
+  const lvl   = (document.getElementById('filterLevel')     || {}).value || '';
+  return { dir, fmt, lvl };
+}
+
+['filterDirection', 'filterFormat', 'filterLevel'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('change', () => {
+    const { dir, fmt, lvl } = getDropdownFilters();
+    renderJobs(dir, fmt, lvl);
   });
 });
 
@@ -547,7 +501,7 @@ const pipelineSteps = [
     desc: 'Допомагаємо з переговорами та оферлетером. Після виходу — підтримка кандидата 30 днів. Безкоштовна заміна, якщо щось пішло не так.',
     cards: [
       { icon: '✍️', label: 'Офер',             text: 'Допомога з офером та переговорами' },
-      { icon: '🛡️', label: 'Гарантія 30 днів', text: 'Заміна безкоштовно якщо не пройшов ІС' },
+      { icon: '🛡️', label: 'Гарантія 30 днів', text: 'Заміна безкоштовно якщо не пройшов випробувальний термін' },
       { icon: '⭐', label: 'Premium 60 днів',  text: '+20% — розширене покриття та виділений рекрутер' },
     ],
   },

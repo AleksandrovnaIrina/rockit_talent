@@ -40,7 +40,7 @@
   </div>
   <div class="container hero__inner">
     <div class="hero__content">
-      <span class="hero__badge">Для кандидатів · iGaming &amp; Affiliate</span>
+      <span class="hero__badge">Для пошуку роботи · iGaming &amp; Affiliate</span>
       <h1 class="hero__title">
         Анонімний матчинг<br>
         для <span class="text-accent">iGaming</span>
@@ -166,14 +166,28 @@
       </div>
       <a href="#contact" class="btn btn--outline">Надіслати профіль →</a>
     </div>
-    <div class="jobs__filters fade-up" role="group" aria-label="Фільтр вакансій">
-      <button class="jobs__filter jobs__filter--active" data-filter="all">Всі</button>
-      <button class="jobs__filter" data-filter="remote">Remote</button>
-      <button class="jobs__filter" data-filter="igaming">iGaming</button>
-      <button class="jobs__filter" data-filter="affiliate">Affiliate</button>
-      <button class="jobs__filter" data-filter="media-buying">Media Buying</button>
-      <button class="jobs__filter" data-filter="senior">Senior+</button>
-      <button class="jobs__filter" data-filter="tech">Tech</button>
+    <div class="jobs__filter-group fade-up" role="group" aria-label="Фільтр вакансій">
+      <select class="jobs__select" id="filterDirection" aria-label="Напрямок">
+        <option value="">Напрямок</option>
+        <option value="media-buying">Media Buying</option>
+        <option value="affiliate">Affiliate</option>
+        <option value="bizdev">BizDev</option>
+        <option value="tech">Tech</option>
+      </select>
+      <select class="jobs__select" id="filterFormat" aria-label="Формат">
+        <option value="">Формат</option>
+        <option value="remote">Remote</option>
+        <option value="office">Office</option>
+        <option value="hybrid">Hybrid</option>
+      </select>
+      <select class="jobs__select" id="filterLevel" aria-label="Рівень">
+        <option value="">Рівень</option>
+        <option value="junior">Junior</option>
+        <option value="middle">Middle</option>
+        <option value="senior">Senior</option>
+        <option value="lead">Lead</option>
+        <option value="head">Head</option>
+      </select>
     </div>
     <div class="jobs__grid" id="jobsGrid" aria-live="polite" aria-label="Список вакансій">
       <!-- Рендериться через JS -->
