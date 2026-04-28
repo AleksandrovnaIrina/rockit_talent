@@ -564,6 +564,34 @@ if (pipelineDetail) {
   });
 
   switchPipelineStep(0);
+
+  // Scroll-driven step switching — desktop only
+  gsap.matchMedia().add('(min-width: 769px)', () => {
+    const navH = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
+    ) || 72;
+    const stepScroll = Math.round(window.innerHeight * 0.6);
+    let lastScrollIdx = 0;
+
+    ScrollTrigger.create({
+      trigger: '.pipeline.section',
+      start: `top top+=${navH}`,
+      end: `+=${stepScroll * (pipelineSteps.length - 1)}`,
+      pin: true,
+      pinSpacing: true,
+      scrub: 0.4,
+      onUpdate(self) {
+        const idx = Math.min(
+          Math.round(self.progress * (pipelineSteps.length - 1)),
+          pipelineSteps.length - 1
+        );
+        if (idx !== lastScrollIdx) {
+          lastScrollIdx = idx;
+          switchPipelineStep(idx);
+        }
+      },
+    });
+  });
 }
 
 /* ============================================================
