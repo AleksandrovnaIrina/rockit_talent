@@ -526,6 +526,7 @@ textarea, input, select {
 }
 .hero__stat:last-child { border-right: none; }
 .hero__stats--3 { grid-template-columns: repeat(3, 1fr); }
+.hero__stats--2 { grid-template-columns: repeat(2, 1fr); }
 .hero__stat:hover { background: var(--bg-card-hover); }
 
 .hero__stat-value {
